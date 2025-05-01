@@ -1,0 +1,18 @@
+<% if (errorMessages.length > 0) { %>
+    <div class="user-message user-message--error">
+        <ul>
+            <% for (let errorMessage of errorMessages ) { %>
+                <li style="text-align: left;"><%= errorMessage %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
+<% if (successMessages.length > 0) { %>
+    <div class="user-message user-message--success">
+        <ul>
+            <% for (let successMessage of successMessages ) { %>
+                <li style="text-align: left;"><%= successMessage %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>

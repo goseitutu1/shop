@@ -1,0 +1,31 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "node tutorials",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^1.20.3",
+    "connect-flash": "^0.1.1",
+    "connect-session-sequelize": "^7.1.7",
+    "csurf": "^1.10.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
+    "mysql2": "^3.13.0",
+    "node": "file:",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.6"
+  }
+}
