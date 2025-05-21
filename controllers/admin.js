@@ -100,17 +100,21 @@ exports.updateProduct = (req, res, next) => {
 };
 
 exports.deleteProduct = (req, res, next) => {
-  const product_id = req.body.id;
+  const product_id = req.params.id;
   let product_title = '';
   Product.findByPk(product_id)
   .then((product) => {
     product_title = product.title
     return product.destroy();
   }).then(result => {
-    req.flash('success',[product_title+' deleted successfully']);
-    res.redirect('/admin/products');
+    // req.flash('success',[product_title+' deleted successfully']);
+    // res.redirect('/admin/products');
+    res.status(200).json({ message: 'Success!' });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    console.log(err)
+    res.status(500).json({ message: 'Deleting product failed.' });
+  });
 };
 
 exports.getProducts = (req, res, next) => {
