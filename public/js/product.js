@@ -18,6 +18,7 @@ const deleteProduct = btn => {
         productElement.parentNode.removeChild(productElement);
       })
       .catch(err => {
+        
         console.log(err);
       });
   };
