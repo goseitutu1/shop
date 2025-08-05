@@ -6,6 +6,7 @@ const errorController = require('./controllers/error');
 const sequelize = require('./util/database')
 const csrf = require('csurf');
 const flash = require('connect-flash');
+const { graphqlHTTP } = require('express-graphql');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
@@ -15,8 +16,21 @@ const Product = require('./models/product')
 const User = require('./models/user')
 const Cart = require('./models/cart');
 const CartItem = require('./models/cart-item');
+const graphqlSchema = require('./graphql/schema');
+const graphqlResolver = require('./graphql/resolvers');
 
 const app = express();
+
+/** graphql setup */
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema: graphqlSchema,
+    rootValue: graphqlResolver,
+    graphiql: true
+  })
+);
+
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -51,6 +65,7 @@ app.use('/admin', adminRoutes);
 app.use(cartRoutes);
 app.use(authRoutes);
 app.use(errorController.get404);
+
 
 /** association definition */
 Product.belongsTo(User, {constraints: true, onDelete: "CASCADE"});
