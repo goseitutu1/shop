@@ -18,8 +18,12 @@ const Cart = require('./models/cart');
 const CartItem = require('./models/cart-item');
 const graphqlSchema = require('./graphql/schema');
 const graphqlResolver = require('./graphql/resolvers');
+const auth = require('./middlewares/backend/auth')
 
 const app = express();
+
+/** use to authenticate users for backend services */
+app.use(auth);
 
 /** graphql setup */
 app.use(

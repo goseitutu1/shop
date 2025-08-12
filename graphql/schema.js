@@ -33,12 +33,20 @@ module.exports = buildSchema(`
         password: String!
     }
 
+    input ProductInputData {
+        title: String!
+        description: String!
+        price: Float!
+        imageUrl: String!
+    }
+
     type RootQuery {
         login(email: String, password: String): AuthData
     }
 
     type RootMutation {
         createUser(userInput: UserInputData): User!
+        createProduct(productInput: ProductInputData): Product!
     }
 
     schema {
