@@ -1,0 +1,7 @@
+{
+    "env": {
+        "JWT_KEY": "secretkeyneedstobein.envfile",
+        "DATABASE": "node_shop",
+        "DB_USER": "root"
+    }
+}
